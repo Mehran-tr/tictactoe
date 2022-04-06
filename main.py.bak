@@ -21,7 +21,4 @@ def printBoard(board):
 
 
 def isBoardFull(board):
-    if board.count(' ') > 1:
-        return False
-    else:
-        return True
+    if board.count
