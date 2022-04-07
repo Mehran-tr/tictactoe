@@ -27,14 +27,14 @@ def isBoardFull(board):
         return True
 
 def IsWinner(b,l):
-    return (b[1] == l and b[2] == l and b[3] == l) or \
+    return ((b[1] == l and b[2] == l and b[3] == l) or \
            (b[4] == l and b[5] == l and b[6] == l) or \
            (b[7] == l and b[8] == l and b[9] == l) or \
            (b[1] == l and b[4] == l and b[7] == l) or \
            (b[2] == l and b[5] == l and b[8] == l) or \
            (b[3] == l and b[6] == l and b[9] == l) or \
            (b[1] == l and b[5] == l and b[9] == l) or \
-           (b[3] == l and b[5] == l and b[7] == l)
+           (b[3] == l and b[5] == l and b[7] == l))
 
 def playerMove():
     run = True
@@ -87,3 +87,38 @@ def computerMove():
     if len(edgesOpen) > 0:
         move = selectRandom(edgesOpen)
         return move
+
+def selectRandom(list):
+    import random
+    ln = len(li)
+    r = random.randRange(0, ln)
+    return li[r]
+
+def main():
+    print("wellcome to the game")
+    printBoard(board)
+
+
+    while not(isBoardFull()):
+        if not(IsWinner(board,'O')):
+            playerMove()
+            printBoard(board)
+        else:
+            print("Sorry you loose!")
+            break
+
+        if not(isWinner(board,'X')):
+            move = computerMove()
+            if move == 0:
+               print(" ")
+            else:
+                insertLetter('O',move)
+                print("computer placed an O on position",move,':')
+                printBoard(board)
+        else:
+            print("you win!")
+            break
+
+    if isBoardFull(board):
+        printBoard("Tie Game")
+
