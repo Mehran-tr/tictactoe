@@ -122,3 +122,11 @@ def main():
     if isBoardFull(board):
         printBoard("Tie Game")
 
+while True:
+    x = input("Do you want to play this again?(Y/N)")
+    if x.lower() == 'Y':
+        board = [' ' for x in range(10)]
+        print('--------------------------------')
+        main()
+    else:
+        break
